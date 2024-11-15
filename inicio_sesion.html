@@ -7,7 +7,8 @@
     <title>Inicio de Sesión - Workout Vision</title>
     <link rel="stylesheet" href="styles/inicio_sesion.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Para íconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -31,37 +32,22 @@
                 <div class="forgot-password">
                     <a href="#">¿Olvidó la contraseña?</a>
                 </div>
-                <button type="submit" class="btn-login">Acceder</button>
+                <button class="btn-register" type="submit" class="btn-login">Acceder</button>
             </form>
             <button class="btn-register" onclick="redirigirRegistro()">Registrarse</button>
+
+            <!-- Mensaje de Bienvenida -->
+            <div id="welcomeMessage" style="display:none;">
+                <p>Bienvenido, <span id="userName"></span></p>
+            </div>
         </div>
     </div>
 </body>
+<script src="js/login.js"></script>
 <script>
-    // Validar el formulario y redirigir
-    document.getElementById('loginForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevenir que el formulario se envíe automáticamente
-
-        // Obtener los valores de los campos
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-
-        // Validación simple
-        if (email === '' || password === '') {
-            alert('Por favor, completa todos los campos.');
-        } else {
-            // Puedes agregar más validaciones aquí (ej. formato de email)
-            redirigirInicio(); // Si todo está correcto, redirige
-        }
-    });
-
-    function redirigirInicio() {
-        window.location.href = "./sesion_iniciada.html";
-    }
-
+    // Función para redirigir a la página de registro
     function redirigirRegistro() {
-        window.location.href = "./registro.html";
+        window.location.href = "registro.html"; // Redirige a la página de registro
     }
 </script>
-
 </html>

@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Vision</title>
     <link rel="stylesheet" href="styles/pagina_inicio.css">
 </head>
+
 <body>
 
     <!-- Encabezado de la página -->
     <header>
-        <nav>
-            <div class="logo">
-                <img src="img/LOGO_WV.png" alt="Logo Workout Vision">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-                <li><a href="#ejercicios-destacados">Ejercicios Destacados</a></li>
-                <li><a href="#consejos">Consejos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <a class="btn-acceder" href="./inicio_sesion.html">Acceder</a>
-        </nav>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="img/LOGO_WV.png" alt="Logo Workout Vision">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#ejercicios-destacados">Ejercicios Destacados</a></li>
+                    <li><a href="#consejos">Consejos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <a class="btn-acceder" href="./inicio_sesion.html">Acceder</a>
+                <!-- Aquí agregamos el mensaje de bienvenida -->
+                <div id="welcomeMessage"></div>
+            </nav>
+        </header>
+        
     </header>
+
 
     <!-- Sección Hero -->
     <section class="hero" id="sobre-nosotros">
         <div class="hero-content">
             <h1>¿Por Qué Trabajamos?</h1>
-            <p>Queremos que tu experiencia en el gimnasio sea la mejor, en Workout Vision te ayudaremos a que entiendas el porqué de cada ejercicio y cómo aplicarlos.</p>
+            <p>Queremos que tu experiencia en el gimnasio sea la mejor, en Workout Vision te ayudaremos a que entiendas
+                el porqué de cada ejercicio y cómo aplicarlos.</p>
             <a href="#mas-informacion" class="btn-hero">Más información</a>
         </div>
     </section>
@@ -95,4 +104,20 @@
     </footer>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    console.log(localStorage);
+    $(document).ready(function () {
+        // Verificar si el nombre del usuario está guardado en localStorage
+        var userName = localStorage.getItem('userName');
+
+        if (userName) {
+            // Mostrar mensaje de bienvenida con el nombre del usuario
+            $('#welcomeMessage').text('¡Bienvenido, ' + userName + '!');
+        } else {
+            // Si no hay usuario en localStorage, redirigir al login
+            window.location.href = 'login.html';  // Cambia por la URL de tu página de login
+        }
+    });
+</script>
 </html>
