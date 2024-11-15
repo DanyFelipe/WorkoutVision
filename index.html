@@ -23,12 +23,14 @@
                     <li><a href="#consejos">Consejos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
-                <a class="btn-acceder" href="./inicio_sesion.html">Acceder</a>
+                <a class="btn-acceder" id="loginButton"href="./inicio_sesion.html">Acceder</a>
                 <!-- Aquí agregamos el mensaje de bienvenida -->
                 <div id="welcomeMessage"></div>
+                <!-- Botón Logout -->
+                <a class="btn-acceder" id="logoutButton" style="display: none;">Cerrar sesión</a>
             </nav>
         </header>
-        
+
     </header>
 
 
@@ -114,10 +116,23 @@
         if (userName) {
             // Mostrar mensaje de bienvenida con el nombre del usuario
             $('#welcomeMessage').text('¡Bienvenido, ' + userName + '!');
+            $('#logoutButton').show(); // Mostrar el botón de logout
+            $('#loginButton').hide();  // Ocultar el botón de "Acceder"
         } else {
-            // Si no hay usuario en localStorage, redirigir al login
-            window.location.href = 'login.html';  // Cambia por la URL de tu página de login
+            // Si no hay usuario en localStorage, mostrar solo el botón de "Acceder"
+            $('#loginButton').show(); // Mostrar el botón de "Acceder"
+            $('#welcomeMessage').text(''); // Asegurarse de que el mensaje de bienvenida esté vacío
+            $('#logoutButton').hide();  // Ocultar el botón de logout
         }
+
+        // Evento para vaciar el localStorage y redirigir al index
+        $('#logoutButton').click(function () {
+            localStorage.removeItem('userName');  // Vaciar el localStorage
+            window.location.href = 'index.html';  // Redirigir al index
+        });
     });
 </script>
+
+
+
 </html>
