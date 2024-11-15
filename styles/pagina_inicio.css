@@ -83,7 +83,7 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     height: 100vh; /* Aseguramos que cubra toda la altura de la ventana */
-    background: url('Imagenes/fondoinicio.jpg') no-repeat center center;
+    background: url('../img/fondoinicio.jpg') no-repeat center center;
     background-size: cover; /* Aseguramos que la imagen cubra toda la sección */
     position: relative;
     text-align: center;
