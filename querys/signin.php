@@ -13,11 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssss", $nombre, $apellido, $email, $telefono, $password);
 
     if ($stmt->execute()) {
-        // Responder con los datos del usuario para guardarlos en el localStorage
         echo json_encode([
             'success' => true,
             'message' => 'Usuario registrado correctamente',
-            'userName' => $nombre,  // Puedes agregar más detalles si es necesario
             'email' => $email
         ]);
     } else {

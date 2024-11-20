@@ -6,44 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Vision</title>
     <link rel="stylesheet" href="styles/pagina_inicio.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
-
-    <!-- Encabezado de la página -->
     <header>
-        <header>
-            <nav>
-                <div class="logo">
-                    <img src="img/LOGO_WV.png" alt="Logo Workout Vision">
+        <div class="navbar">
+            <div class="navbar-logo">
+                <a href="#"><img src="./img/LOGO_wv.png" alt="Logo"></a>
+            </div>
+            <div class="navbar-links">
+                <a href="#">Sobre nosotros</a>
+                <a href="#">Ejercicios destacados</a>
+                <a href="#">Consejos</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div id="login-message"></div>
+            <div class="btn-login" id="auth-buttons"></div>
+            <div class="navbar-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="dropdown-menu">
+                <div class="navbar-links">
+                    <a href="#">Sobre nosotros</a>
+                    <a href="#">Ejercicios destacados</a>
+                    <a href="#">Consejos</a>
+                    <a href="#">Contacto</a>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-                    <li><a href="#ejercicios-destacados">Ejercicios Destacados</a></li>
-                    <li><a href="#consejos">Consejos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-                <a class="btn-acceder" id="loginButton"href="./inicio_sesion.html">Acceder</a>
-                <!-- Aquí agregamos el mensaje de bienvenida -->
-                <div id="welcomeMessage"></div>
-                <!-- Botón Logout -->
-                <a class="btn-acceder" id="logoutButton" style="display: none;">Cerrar sesión</a>
-            </nav>
-        </header>
-
-    </header>
-
-
-    <!-- Sección Hero -->
-    <section class="hero" id="sobre-nosotros">
-        <div class="hero-content">
-            <h1>¿Por Qué Trabajamos?</h1>
-            <p>Queremos que tu experiencia en el gimnasio sea la mejor, en Workout Vision te ayudaremos a que entiendas
-                el porqué de cada ejercicio y cómo aplicarlos.</p>
-            <a href="#mas-informacion" class="btn-hero">Más información</a>
+            </div>
         </div>
-    </section>
-
+    </header>
+    <div id="hero-section"></div>
     <!-- Sección Ejercicios Destacados -->
     <section id="ejercicios-destacados" class="ejercicios-destacados">
         <h2>Ejercicios Destacados</h2>
@@ -104,35 +99,7 @@
     <footer>
         <p>&copy; 2024 All Rights Reserved | Fitness Web Design</p>
     </footer>
-
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    console.log(localStorage);
-    $(document).ready(function () {
-        // Verificar si el nombre del usuario está guardado en localStorage
-        var userName = localStorage.getItem('userName');
-
-        if (userName) {
-            // Mostrar mensaje de bienvenida con el nombre del usuario
-            $('#welcomeMessage').text('¡Bienvenido, ' + userName + '!');
-            $('#logoutButton').show(); // Mostrar el botón de logout
-            $('#loginButton').hide();  // Ocultar el botón de "Acceder"
-        } else {
-            // Si no hay usuario en localStorage, mostrar solo el botón de "Acceder"
-            $('#loginButton').show(); // Mostrar el botón de "Acceder"
-            $('#welcomeMessage').text(''); // Asegurarse de que el mensaje de bienvenida esté vacío
-            $('#logoutButton').hide();  // Ocultar el botón de logout
-        }
-
-        // Evento para vaciar el localStorage y redirigir al index
-        $('#logoutButton').click(function () {
-            localStorage.removeItem('userName');  // Vaciar el localStorage
-            window.location.href = 'index.html';  // Redirigir al index
-        });
-    });
-</script>
-
-
-
+<script src="js/main.js"></script>
 </html>
