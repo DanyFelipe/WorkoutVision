@@ -8,12 +8,11 @@
 /* Estilo del cuerpo */
 body {
     font-family: 'Arial', sans-serif;
-    background: url('../img/fondoinicio.jpg') no-repeat center center;
+    background: url('../assets/img/fondoinicio2.jpg') no-repeat center center;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
 }
 
 /* Contenedor Principal */

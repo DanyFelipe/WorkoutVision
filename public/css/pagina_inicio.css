@@ -13,55 +13,6 @@ body {
     background-color: #000;
     margin: 0;
 }
-/* Sección Hero */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('../img/fondoinicio.jpg') no-repeat center center;
-    background-size: cover;
-    position: relative;
-    text-align: center;
-    color: #fff;
-    overflow: hidden;
-}
-
-.hero.logged-in {
-    background: url('../img/fondoinicio2.jpg') no-repeat center center;
-    background-size: cover;
-}
-
-.hero-content {
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro para mejorar la legibilidad */
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 600px; /* Limitamos el ancho del contenido */
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin: 15px 0;
-}
-
-.btn-hero {
-    background-color: #ff0000;
-    color: #fff;
-    padding: 15px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.btn-hero:hover {
-    background-color: #d10000;
-}
-
 /* Sección Ejercicios Destacados */
 .ejercicios-destacados {
     padding: 60px 40px;
