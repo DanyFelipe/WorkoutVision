@@ -1,16 +1,19 @@
 import { ajaxRequest } from "../utils/ajax.js";
 
-export function fetchRutinasWithExercises(userId) {
-    return ajaxRequest("routes/api.php", {
-        action: "fetchRutinasWithExercises",
-        userId: userId // Asegurarse de enviar el ID del usuario
+// Traer las rutinas vinculadas al usuario logueado
+export function fetchUserRutinas(userId) {
+    return $.ajax({
+        url: "routes/api.php",
+        method: "POST",
+        dataType: "json",
+        data: {
+            action: "fetchUserRutinas",
+            userId: userId, // Enviar el ID del usuario
+        },
     });
 }
 
-// Agregar una rutina a un usuario
-export function addRutinaToUser(rutinaId) {
-    return ajaxRequest("../routes/api.php", {
-        action: "addRutinaToUser",
-        rutinaId: rutinaId
-    });
+// Obtener todas las rutinas disponibles con ejercicios
+export function fetchAllRutinasWithExercises() {
+    return ajaxRequest("routes/api.php", { action: "fetchAllRutinasWithExercises" });
 }

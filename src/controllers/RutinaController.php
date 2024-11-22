@@ -11,31 +11,44 @@ class RutinaController
         $this->rutinaModel = new Rutina();
     }
 
-    public function getRutinasWithExercises() {
+    public function getAllRutinasWithExercises()
+    {
         try {
-            $rutinas = $this->rutinaModel->getRutinasWithExercises();
-    
-            // Verificar si las rutinas tienen datos
-            if (empty($rutinas)) {
-                echo json_encode(['success' => true, 'rutinas' => []]);
-                exit;
-            }
-    
+            $rutinas = $this->rutinaModel->getAllWithExercises();
             echo json_encode(['success' => true, 'rutinas' => $rutinas]);
-            exit;
         } catch (Exception $e) {
-            error_log("Error al obtener rutinas: " . $e->getMessage());
-            echo json_encode(['success' => false, 'message' => 'Error al obtener rutinas']);
-            exit;
+            error_log("Error al obtener todas las rutinas: " . $e->getMessage());
+            echo json_encode(['success' => false, 'message' => 'Error al obtener las rutinas.']);
         }
     }
-    public function getUserRutinasWithExercises($userId) {
-        require_once __DIR__ . '/../models/Rutina.php';
-        $rutinaModel = new Rutina();
-        $rutinas = $rutinaModel->getRutinasByUserId($userId);
+
+    public function getUser_has_Rutinas($userId)
+    {
+        // Verificar si el ID de usuario está presente
+        if (!$userId) {
+            echo json_encode(['success' => false, 'message' => 'ID de usuario no proporcionado.']);
+            return;
+        }
     
-        // Si el usuario no tiene rutinas, devuelve un array vacío
-        return $rutinas ?: [];
+        try {
+            // Obtener las rutinas del modelo
+            $rutinas = $this->rutinaModel->getUser_has_Rutinas($userId);
+    
+            // Log para depuración
+            error_log("Datos procesados antes de enviar JSON: " . print_r($rutinas, true));
+    
+            // Retornar JSON con las rutinas o un array vacío si no hay resultados
+            echo json_encode([
+                'success' => true,
+                'rutinas' => $rutinas ?: [] // Si $rutinas está vacío, envía un array vacío
+            ]);
+        } catch (Exception $e) {
+            // Loguear el error y enviar un mensaje genérico
+            error_log("Error al obtener rutinas del usuario: " . $e->getMessage());
+            echo json_encode([
+                'success' => false,
+                'message' => 'Error al obtener rutinas vinculadas al usuario.'
+            ]);
+        }
     }
-    
 }
