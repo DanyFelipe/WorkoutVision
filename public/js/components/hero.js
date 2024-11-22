@@ -53,7 +53,7 @@ export async function loadHeroSection() {
                                         ${rutina.ejercicios
                                             .map(
                                                 (ej) => `
-                                            <li>${ej.nombre_ejercicio} - ${ej.series || 0}x${ej.repeticiones || 0}</li>
+                                            <li><strong>${ej.nombre_ejercicio}</strong> - ${ej.series || 0}x${ej.repeticiones || 0}</li>
                                         `
                                             )
                                             .join("")}
@@ -78,6 +78,7 @@ export async function loadHeroSection() {
         `;
     }
 }
+
 export function setupViewAllRutinasButton() {
     const viewAllRutinasButton = document.getElementById("btnVerRutinas");
 
@@ -89,7 +90,7 @@ export function setupViewAllRutinasButton() {
     viewAllRutinasButton.addEventListener("click", async () => {
         try {
             const response = await fetchAllRutinasWithExercises();
-            
+
             if (!response.success) {
                 throw new Error(response.message || "Error al obtener las rutinas disponibles.");
             }
@@ -100,6 +101,7 @@ export function setupViewAllRutinasButton() {
         }
     });
 }
+
 // Renderiza un nuevo hero con todas las rutinas disponibles
 function renderAllRutinasHero(rutinas) {
     const heroContainer = document.getElementById("hero-section");
@@ -112,6 +114,15 @@ function renderAllRutinasHero(rutinas) {
                         <div class="rutina-card">
                             <h3>${rutina.nombre_rutina} (${rutina.nivel})</h3>
                             <p>${rutina.descripcion}</p>
+                            <ul>
+                                ${rutina.ejercicios.map(ejercicio => `
+                                    <li>
+                                        <strong>${ejercicio.nombre_ejercicio}</strong>: 
+                                        ${ejercicio.series || 0}x${ejercicio.repeticiones || 0} 
+                                        ${ejercicio.peso ? `@ ${ejercicio.peso}kg` : ""}
+                                    </li>
+                                `).join("")}
+                            </ul>
                         </div>
                     `).join("")}
                 </div>
@@ -119,4 +130,3 @@ function renderAllRutinasHero(rutinas) {
         </section>
     `;
 }
-
