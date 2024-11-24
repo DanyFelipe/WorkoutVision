@@ -51,4 +51,20 @@ class RutinaController
             ]);
         }
     }
+    public function addUserRutina($userId, $rutinaId)
+    {
+        try {
+            require_once __DIR__ . '/../models/Rutina.php';
+            $rutinaModel = new Rutina();
+            return $rutinaModel->addUserRutina($userId, $rutinaId);
+        } catch (Exception $e) {
+            error_log("Error al agregar rutina al usuario: " . $e->getMessage());
+            return false;
+        }
+    }
+    public function deleteUserRutina($userId, $rutinaId) {
+        require_once __DIR__ . '/../models/Rutina.php';
+        $rutinaModel = new Rutina();
+        return $rutinaModel->deleteUserRutina($userId, $rutinaId);
+    } 
 }

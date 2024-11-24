@@ -12,10 +12,10 @@ function initApp() {
     importNavbar();
 
     // Verifica si estás en index.html antes de cargar la sección Hero
-    if (window.location.pathname === "/WorkoutVision/public/index.html") {
+    if (document.title === "Workout Vision") {
         loadHeroSection();
     } else {
-        console.log("No es index.html, no se carga la sección Hero.");
+        console.log("No es la página de inicio, no se carga la sección Hero.");
     }
 
     // Configurar eventos de formularios
@@ -96,3 +96,15 @@ function setupSignupForm() {
         });
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    // Carga la sección hero principal
+    loadHeroSection();
+
+    // Configura el evento del botón de volver
+    document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target && target.id === "btnBack") {
+            loadHeroSection(); // Vuelve a cargar el hero principal
+        }
+    });
+});

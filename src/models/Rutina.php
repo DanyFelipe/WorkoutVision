@@ -102,4 +102,24 @@ class Rutina
     
         return array_values($rutinas);
     }
+    public function addUserRutina($userId, $rutinaId)
+    {
+        try {
+            $query = "INSERT INTO User_has_Rutina (User_idUser, Rutina_idRutina) VALUES (:userId, :rutinaId)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':rutinaId', $rutinaId, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Error en la consulta addUserRutina: " . $e->getMessage());
+            return false;
+        }
+    }
+    public function deleteUserRutina($userId, $rutinaId) {
+        $query = "DELETE FROM User_has_Rutina WHERE User_idUser = :userId AND Rutina_idRutina = :rutinaId";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':rutinaId', $rutinaId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
