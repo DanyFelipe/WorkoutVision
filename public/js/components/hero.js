@@ -4,7 +4,11 @@ export async function loadHeroSection() {
     const heroContainer = document.getElementById("hero-section");
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     const userId = localStorage.getItem("userId");
-
+    
+    if (!document.getElementById("hero-section")) {
+        console.log("La sección 'hero-section' no está disponible en esta página.");
+        return;
+    }
     heroContainer.innerHTML = ""; // Limpia el contenedor
 
     if (!isLoggedIn || !userId) {
